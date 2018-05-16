@@ -1,0 +1,151 @@
+swagger: "2.0"
+info:
+  description: "API model for robot inventory system"
+  version: "0.0.1"
+  title: "Host Inventory"
+  termsOfService: ""
+  contact:
+    email: "contact@riverstone.io"
+host: "####"
+basePath: "/####/v1"
+schemes:
+  - "https"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+paths:
+  /hosts:
+    get:
+      summary: "Get details for Robot data"
+      description: "Get a list of all robots/data in the inventory"
+      operationId: "#####"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Data list"
+          schema:
+            $ref: "#/definitions/robot"
+    post:
+      summary: "Create entry for new robot in the inventory system"
+      description: "New robot"
+      operationId: "####"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Robot Data Object"
+        required: true
+        schema:
+          $ref: "#/definitions/robot"
+      responses:
+        200:
+          description: "New Robot Entry Successful"
+          schema:
+            $ref: "#/definitions/robot"
+        405:
+          description: "Invalid input"
+  /hosts/{id}:
+    get:
+      summary: "Get robot data for a specfic ID"
+      description: "Gets data for a single robot"
+      operationId: "###"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        description: "The unique id for the robot data being retrieved"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Single Robot Data"
+          schema:
+            $ref: "#/definitions/robot"
+        404:
+          description: "Entry not found"
+    put:
+      summary: "Update data for a robot with a specific ID"
+      description: "Update data for single robot"
+      operationId: "#######"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        description: "The unique id for the robot data being updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Robot Data Object"
+        required: true
+        schema:
+          $ref: "#/definitions/robot"
+      responses:
+        200:
+          description: "Robot Data Updated"
+          schema:
+            $ref: "#/definitions/robot"
+        404:
+          description: "Entry not found"
+        405:
+          description: "Invalid input"
+    delete:
+      summary: "Delete a entry for a single robot"
+      description: "Delete robot entry with a specific id"
+      operationId: "########"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "id"
+        description: "The unique if for the robot data being updated"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Robot Data Deleted"
+        404:
+          description: "Entry not found"
+
+definitions:
+  robot:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        description: "unique id for a specific robot"
+      date_added:
+        type: "string"
+        format: "date"
+        description: "date added to the inventory system"
+      first_active:
+        type: "string"
+        format: "date"
+        description: "date the robot first was activated"
+      current_name:
+        type: "string"
+        description: "the name the robot calls itself, first and last"
+      height:
+        type: "number"
+        format: "float"
+        description: "height, in inches"
+      weight:
+        type: "number"
+        format: "float"
+        description: "weight, in pounds"
+      intelligence_metric:
+        type: "integer"
+        minimum: 1
+        maximum: 20
+        description: "scale of 1 to 20, where 20 is the max intelligence"
