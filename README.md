@@ -10,7 +10,8 @@ back-end component.
 The backend service should provide a RESTful API to interact with the data.
 The backend should be written in Node JS, and all of the testing should be done
 with Chai/Mocha. See the OpenAPI definition in the repo for details about the
-endpoints which should be exposed.
+endpoints which should be exposed. Note: Some elements in the OpenAPI definition
+will need to be filled in (host, basePath, operationIds). 
 
 
 ## Frontend
