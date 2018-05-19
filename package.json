@@ -4,7 +4,7 @@
   "description": "Dr. Robert Ford has hired Riverstone to develop an application for managing his inventory of robots. There are certain characteristics that he would like to track for all robots. The app should have a front-end and a back-end component.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test mocha --exit"
   },
   "repository": {
     "type": "git",
