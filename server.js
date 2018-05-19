@@ -31,10 +31,12 @@ app.get('/api/v1/robots', (request, response) => {
 });
 
 app.post('/api/v1/robots', (request, response) => {
+  console.log('request', request.body)
   const robots = request.body;
 
   for (let requiredParameter of ['date_added', 'first_active', 'current_name', 'height', 'weight', 'intelligence_metric' ]) {
     if (!robots[requiredParameter]) {
+      console.log('here')
       return response
         .status(422)
         .send({
