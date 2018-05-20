@@ -17,6 +17,7 @@ app.get('/', (request, response) => {
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
 
@@ -53,8 +54,25 @@ app.post('/api/v1/robots', (request, response) => {
     })
 });
 
+app.delete('/api/v1/robots/:id', (request, response) => {
+  console.log(request.params.id)
+  database('robots').where('id', request.params.id).del()
+    .then( id => {
+      if (id) {
+        response.status(204).json({ id })
+      } else {
+        response.status(404).json({
+          error: `Could not find robot with id ${request.params.id}`
+        })
+      }
+    })
+    .catch( error => {
+      response.status(500).json({error})
+    })
+});
+
 app.listen(app.get('port'), () => {
   console.log(`Reverie's backend is running on port ${app.get('port')}`)
-})
+});
 
 module.exports = app;
