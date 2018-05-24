@@ -75,4 +75,29 @@ describe('API-ROUTES', () => {
         })
     })
   })
+
+  // describe('DELETE /api/v1/robots/:id', () => {
+  //   it('should delete a record with a specific id', () => {
+  //     return chai.request(server)
+  //       .delete('/api/v1/robots/1')
+  //       .then(response => {
+  //         response.should.have.status(204)
+  //       })
+  //       .catch(error => {
+  //         throw error;
+  //       })
+  //   })
+  // })
+  describe('DELETE /api/v1/robots/:id', () => {
+    it('should delete a record with a spec id', () => {
+      return chai.request(server)
+        .delete(`/api/v1/robots/1`)
+        .then(response => {
+          response.should.have.status(404);
+        })
+        .catch(error => {
+          throw error;
+        })
+    })
+  })
 })
