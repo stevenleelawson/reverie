@@ -7,7 +7,7 @@
 6. Type `knex seed:run` and `knex seed:run --env=test` to seed the development and test databases
 7. Type `node server.js` to start the server
 8. Run the [front end repo]('https://github.com/stevenleelawson/reverie-front-end-lawson') by cloning, typing `npm install` and then `npm start`. You will be prompted to run the front end on localhost:3001. Then type `y` and hit enter.
-9. Enjoy Lawson's Amazing Robots!
+9. Enjoy Lawson's Amazing Robots
 
 # Reverie - Inventory Tracking App
 Dr. Robert Ford has hired Riverstone to develop an application for
